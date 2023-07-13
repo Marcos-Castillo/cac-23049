@@ -1,10 +1,10 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="ar.com.codoacodo.oop.Articulo" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
@@ -50,8 +50,8 @@
                         <thead>
                           <tr>
                             <th scope="col">#</th>
-                            <th scope="col">TÃ­tulo</th>
-                            <th scope="col">CÃ³digo</th>
+                            <th scope="col">Ti­tulo</th>
+                            <th scope="col">Código</th>
                             <th scope="col">Precio</th>
                             <th scope="col">Fecha</th>
                             <th scope="col">Acciones</th>

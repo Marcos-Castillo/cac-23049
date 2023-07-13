@@ -1,9 +1,9 @@
-<%@ page import="ar.com.codoacodo.*" %>
+<%@ page import="ar.com.codoacodo.oop.Articulo" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
@@ -11,16 +11,16 @@
     <title>CaC23049</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
-<body>
+<body class="">
     <jsp:include page="navbar.jsp"/>
       <% 
       Articulo articulo = (Articulo)request.getAttribute("producto");
      %>
-    <div class="container">
+    <div class="container m-5">
         <div class="row">
             <div class="col-12">
                 <section>
-                    <h1>Editar Articulo id=<%=articulo.getId()%></h1>
+                    <h4>Editar Articulo <b>id=<%=articulo.getId()%></b> </h2>
                     <form method="post" action="<%=request.getContextPath()%>/EditarController?id=<%=articulo.getId()%>">
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" 

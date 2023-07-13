@@ -82,7 +82,27 @@ public class MySQLDAOImpl implements DAO {
 
     @Override
     public void update(Articulo articulo) {
-        String sql = "update "+this.tableName+" set titulo= , precio= , autor= ";
+        try {
+            //String sql = "update "+this.tableName+" set titulo= , precio= , autor= ";
+            String sql = "update " + this.tableName;
+            sql += "set titulo=" + articulo.getTitulo();
+            sql += ",set autor =" + articulo.getAutor();
+            sql += ",set imagen =" + articulo.getImagen();
+            sql += "where codigo =" + articulo.getCodigo() + "  ";
+
+//         
+            //Obtener la Conection
+            Connection con = AdministradorDeConexiones.getConnection();
+
+            //PreparedStatement con mi sql
+            PreparedStatement pst = con.prepareStatement(sql);
+
+            //RestultSet
+            pst.executeUpdate();//INSERT/UPDATE/DELETE
+            
+        } catch (SQLException sQLException) {
+        } finally {
+        }
     }
 
     @Override
