@@ -1,5 +1,6 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="ar.com.codoacodo.oop.Articulo" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -50,8 +51,8 @@
                         <thead>
                           <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Ti­tulo</th>
-                            <th scope="col">Código</th>
+                            <th scope="col">TÃ­tulo</th>
+                            <th scope="col">CÃ³digo</th>
                             <th scope="col">Precio</th>
                             <th scope="col">Fecha</th>
                             <th scope="col">Acciones</th>

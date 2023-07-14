@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="ar.com.codoacodo.*" %>
 <!DOCTYPE html>
 <html lang="es">
@@ -21,13 +22,15 @@
                     <form method="post" action="<%=request.getContextPath()%>/AltaArticuloController">
                            <div class="mb-3">
                             <label for="exampleFormControlInput1" 
-                                class="form-label">Nombre</label>
+                                class="form-label"
+                                 >Nombre</label>
                             <input name="nombre" 
                                 type="text" 
                                 class="form-control" 
                                 id="exampleFormControlInput1"
                                 placeholder="Nombre"
-                                maxlength="50">
+                                maxlength="50"
+                                 required oninput="habilitarBoton()">
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlTextarea1" 
@@ -36,26 +39,30 @@
                             <input name="precio" 
                                 type="number" 
                                 class="form-control" 
-                                id="exampleFormControlTextarea1">
+                                id="exampleFormControlTextarea1"
+                                required oninput="habilitarBoton()">
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlTextarea1" 
-                                class="form-label">Im&aacute;gen
+                                class="form-label"
+                                >Imágen
                             </label>
                             <input name="imagen" 
                                 type="file" 
                                 class="form-control" 
-                                id="exampleFormControlTextarea1">
+                                id="exampleFormControlTextarea1"
+                                required oninput="habilitarBoton()">
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlTextarea1" 
-                                class="form-label">C&oacute;digo
+                                class="form-label">Código
                             </label>
                             <input name="codigo" 
                                 type="text" 
                                 class="form-control" 
                                 id="exampleFormControlTextarea1" 
-                                maxlength="7">
+                                maxlength="7"
+                                required oninput="habilitarBoton()">
                         </div>
                         <div class="mb-3">
                             <label for="autor" 
@@ -65,15 +72,35 @@
                                 type="text" 
                                 class="form-control" 
                                 id="autor" 
-                                maxlength="50">
+                                maxlength="50"
+                                required oninput="habilitarBoton()">
                         </div>
-                        <button class="btn btn-primary">
-                            Dar de alta
-                        </button>
+                     
+                        <button  class="btn btn-primary" id="miBoton" disabled>Dar de alta </button>
                     </form>
                 </section>
             </div>
         </div>
+        <script>
+             function habilitarBoton() {
+      var inputs = document.getElementsByTagName('input');
+      var boton = document.getElementById('miBoton');
+      var completos = true;
+
+      for (var i = 0; i < inputs.length; i++) {
+        if (inputs[i].hasAttribute('required') && !inputs[i].value) {
+          completos = false;
+          inputs[i].classList.remove('was-validated');
+          inputs[i].classList.add('needs-validation');
+        } else {
+          inputs[i].classList.remove('needs-validation');
+          inputs[i].classList.add('was-validated');
+        }
+      }
+
+      boton.disabled = !completos;
+    }
+          </script>
 </body>
 
 </html>

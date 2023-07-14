@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="ar.com.codoacodo.oop.Articulo" %>
 <!DOCTYPE html>
 <html lang="es">

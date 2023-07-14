@@ -1,4 +1,5 @@
 
+<%@ page contentType="text/html; charset=UTF-8" %>
 <nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary mb-5">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.jsp">Navbar</a>
