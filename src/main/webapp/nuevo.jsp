@@ -16,68 +16,80 @@
     <jsp:include page="navbar.jsp"/>
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-8 mx-auto">
                 <section>
-                    <h1>Alta Articulo</h1>
-                    <form method="post" action="<%=request.getContextPath()%>/AltaArticuloController">
-                           <div class="mb-3">
-                            <label for="exampleFormControlInput1" 
-                                class="form-label"
-                                 >Nombre</label>
-                            <input name="nombre" 
-                                type="text" 
-                                class="form-control" 
-                                id="exampleFormControlInput1"
-                                placeholder="Nombre"
-                                maxlength="50"
-                                 required oninput="habilitarBoton()">
+                    <div class="card border-dark mb-3">
+                        <div class="card-header">
+                            <h5 class="card-title">Alta Articulo</h5>
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" 
-                                class="form-label">Precio
-                            </label>
-                            <input name="precio" 
-                                type="number" 
-                                class="form-control" 
-                                id="exampleFormControlTextarea1"
-                                required oninput="habilitarBoton()">
+                        <div class="card-body text-dark">
+                          
+                          <p class="card-text">
+                            <form method="post" action="<%=request.getContextPath()%>/AltaArticuloController">
+                                <div class="mb-3">
+                                 <label for="exampleFormControlInput1" 
+                                     class="form-label"
+                                      >Nombre</label>
+                                 <input name="nombre" 
+                                     type="text" 
+                                     class="form-control" 
+                                     id="exampleFormControlInput1"
+                                     placeholder="Nombre"
+                                     maxlength="50"
+                                      required oninput="habilitarBoton()">
+                             </div>
+                             <div class="mb-3">
+                                 <label for="exampleFormControlTextarea1" 
+                                     class="form-label">Precio
+                                 </label>
+                                 <input name="precio" 
+                                     type="number" 
+                                     class="form-control" 
+                                     id="exampleFormControlTextarea1"
+                                     required oninput="habilitarBoton()">
+                             </div>
+                             <div class="mb-3">
+                                 <label for="exampleFormControlTextarea1" 
+                                     class="form-label"
+                                     >Imágen
+                                 </label>
+                                 <input name="imagen" 
+                                     type="file" 
+                                     class="form-control" 
+                                     id="exampleFormControlTextarea1"
+                                     required oninput="habilitarBoton()">
+                             </div>
+                             <div class="mb-3">
+                                 <label for="exampleFormControlTextarea1" 
+                                     class="form-label">Código
+                                 </label>
+                                 <input name="codigo" 
+                                     type="text" 
+                                     class="form-control" 
+                                     id="exampleFormControlTextarea1" 
+                                     maxlength="7"
+                                     required oninput="habilitarBoton()">
+                             </div>
+                             <div class="mb-3">
+                                 <label for="autor" 
+                                     class="form-label">Autor
+                                 </label>
+                                 <input name="autor" 
+                                     type="text" 
+                                     class="form-control" 
+                                     id="autor" 
+                                     maxlength="50"
+                                     required oninput="habilitarBoton()">
+                             </div>
+                          
+                             <button  class="btn btn-primary" id="miBoton" disabled>Dar de alta </button>
+                         </form>
+
+                          </p>
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" 
-                                class="form-label"
-                                >Imágen
-                            </label>
-                            <input name="imagen" 
-                                type="file" 
-                                class="form-control" 
-                                id="exampleFormControlTextarea1"
-                                required oninput="habilitarBoton()">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" 
-                                class="form-label">Código
-                            </label>
-                            <input name="codigo" 
-                                type="text" 
-                                class="form-control" 
-                                id="exampleFormControlTextarea1" 
-                                maxlength="7"
-                                required oninput="habilitarBoton()">
-                        </div>
-                        <div class="mb-3">
-                            <label for="autor" 
-                                class="form-label">Autor
-                            </label>
-                            <input name="autor" 
-                                type="text" 
-                                class="form-control" 
-                                id="autor" 
-                                maxlength="50"
-                                required oninput="habilitarBoton()">
-                        </div>
-                     
-                        <button  class="btn btn-primary" id="miBoton" disabled>Dar de alta </button>
-                    </form>
+                      </div>
+                    
+                    
                 </section>
             </div>
         </div>

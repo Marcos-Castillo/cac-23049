@@ -1,6 +1,11 @@
 
 <%@ page contentType="text/html; charset=UTF-8" %>
-<nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary mb-5">
+<style>
+  body {
+    padding-top: 70px; /* Altura de la barra de navegación */
+  }
+</style>
+<nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary mb-5 fixed-top">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.jsp">Navbar</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

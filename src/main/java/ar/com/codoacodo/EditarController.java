@@ -12,7 +12,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import ar.com.codoacodo.dao.impl.DAO;
 import ar.com.codoacodo.dao.impl.MySQLDAOImpl;
 import ar.com.codoacodo.oop.Articulo;
-import ar.com.codoacodo.oop.Libro;
 
 @WebServlet("/EditarController")
 public class EditarController extends HttpServlet {
@@ -48,7 +47,7 @@ public class EditarController extends HttpServlet {
         String isbn  = "123465465456";
         LocalDateTime fechaCreacion = LocalDateTime.now();
         
-        Articulo nuevo = new Libro(titulo, codigo, autor, precio, false, isbn,codigo,fechaCreacion);
+        Articulo nuevo = new A(titulo, codigo, autor, precio, false, isbn,codigo,fechaCreacion);
         
         //Interface nombre  = new ClaseQueImplementaLaIntarface();
         DAO dao = new MySQLDAOImpl();

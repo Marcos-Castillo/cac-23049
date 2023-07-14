@@ -13,7 +13,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import ar.com.codoacodo.dao.impl.DAO;
 import ar.com.codoacodo.dao.impl.MySQLDAOImpl;
 import ar.com.codoacodo.oop.Articulo;
-import ar.com.codoacodo.oop.Libro;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -38,7 +37,7 @@ public class AltaArticuloController extends HttpServlet {
         String isbn  = "123465465456";
         LocalDateTime fechaCreacion = LocalDateTime.now();
         
-        Articulo nuevo = new Libro(titulo, codigo, autor, precio, false, isbn,codigo,fechaCreacion);
+        Articulo nuevo = new Articulo(titulo, codigo, autor, precio, false, codigo,fechaCreacion);
         
         //Interface nombre  = new ClaseQueImplementaLaIntarface();
         DAO dao = new MySQLDAOImpl();

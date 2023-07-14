@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 import ar.com.codoacodo.db.AdministradorDeConexiones;
 import ar.com.codoacodo.oop.Articulo;
-import ar.com.codoacodo.oop.Libro;
 
 //cumplo el contrato
 public class MySQLDAOImpl implements DAO {
@@ -144,7 +143,7 @@ public class MySQLDAOImpl implements DAO {
         return findBySQL(sql);
     }
 
-    private ArrayList<Articulo> findBySQL(String sql) throws SQLException {
+    private ArrayList<Articulo> findBySQL(String sql) throws Exception {
         //Obtener la Conection
         Connection con = AdministradorDeConexiones.getConnection();
 
@@ -156,20 +155,21 @@ public class MySQLDAOImpl implements DAO {
         ResultSet res = pst.executeQuery();
 
         while(res.next()) {
-            Long id = res.getLong(1);
+            Long _id = res.getLong(1);
             String titulo = res.getString(2);
             String imagen = res.getString(3);
             String autor = res.getString(4);
-            Long novedad = res.getLong(5);
+            String novedad = res.getString(5);
             Date fechaCreacion = res.getDate(6);
             String codigo = res.getString(7);
             Double precio = res.getDouble(8);
 
-            boolean esNovedad = novedad.equals(1L);//long 
+            var articulo = new Articulo(_id, titulo, imagen, autor, Double.parseDouble(precio), Boolean.parseBoolean(novedad), codigo, LocalDateTime.now());
+        
             //TODO:
             //LocalDateTime ldt = LocalDateTime.ofInstant(fechaCreacion.toInstant(),ZoneId.systemDefault());
 
-            listado.add(new Articulo(id, titulo, imagen, autor, precio, esNovedad, codigo, LocalDateTime.now()));
+            listado.add(articulo);
         }
         return listado;
     }

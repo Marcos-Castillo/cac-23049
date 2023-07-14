@@ -45,7 +45,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <section>
+                <section >
                     <h1>Listado de Articulos</h1>
                     <table class="table">
                         <thead>
