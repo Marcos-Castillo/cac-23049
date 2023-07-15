@@ -22,6 +22,7 @@
             <div class="col-12">
                 <section>
                     <h4>Editar Articulo <b>id=<%=articulo.getId()%></b> </h2>
+                        
                     <form method="post" action="<%=request.getContextPath()%>/EditarController?id=<%=articulo.getId()%>">
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" 
@@ -76,7 +77,7 @@
                                 class="form-control" 
                                 id="autor" 
                                 maxlength="50"
-                                value="<%=articulo.getCodigo()%>">
+                                value="<%=articulo.getAutor()%>">
                         </div>
                         <button class="btn btn-primary">
                             Modificar

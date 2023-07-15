@@ -17,7 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 //App.java = Clase java
-@WebServlet("/web-app/AltaArticuloController")
+@WebServlet("/AltaArticuloController")
 public class AltaArticuloController extends HttpServlet {
 
     /**
@@ -34,7 +34,7 @@ public class AltaArticuloController extends HttpServlet {
         double precio = Double.parseDouble(req.getParameter("precio"));
         String autor  = req.getParameter("autor");
         String codigo  = req.getParameter("codigo");
-        String isbn  = "123465465456";
+       // String isbn  = "123465465456";
         LocalDateTime fechaCreacion = LocalDateTime.now();
         
         Articulo nuevo = new Articulo(titulo, codigo, autor, precio, false, codigo,fechaCreacion);
