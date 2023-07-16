@@ -1,11 +1,10 @@
-//paquete: ar/com/codo
 package ar.com.codoacodo;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import ar.com.codoacodo.dao.impl.DAO;
 import ar.com.codoacodo.dao.impl.MySQLDAOImpl;
-import java.util.ArrayList;
 import ar.com.codoacodo.oop.Articulo;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -13,29 +12,26 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/BuscadorController")//dao.findAllByTitle(clave);
+@WebServlet("/BuscadorController")
 public class BuscadorController extends HttpServlet {
-    @Override
+    
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       
-        //Interface nombre  = new ClaseQueImplementaLaIntarface();
+
+        String clave = req.getParameter("clave");
+
+        //uso el dao
         DAO dao = new MySQLDAOImpl();
-        
-        //puedo usar lo metodos que tiene DAO, sin saber quien cumple el contrato
+
+        //buscar
         try {
-            ArrayList<Articulo> listado = dao.findAll();
+            ArrayList<Articulo> listado = dao.findAllByTitle(clave);
 
-            //guardar los datos en el request, es un objeto creado por Tomcat
-            req.setAttribute("listado", listado); //idem localStorage
+            req.setAttribute("listado",listado);
+
         } catch (Exception e) {
-            var listado = new ArrayList<>();
-            req.setAttribute("listado", listado); //idem localStorage
-
-            //error
-            req.setAttribute("error", e.getMessage() );
-        } //try/catch/finally
-
-        //redirect
-        getServletContext().getRequestDispatcher("/listado.jsp").forward(req, resp);
+            req.setAttribute("listado",new ArrayList<>());
+        }
+        
+        getServletContext().getRequestDispatcher("/listado.jsp").forward(req, resp);//GET
     }
 }

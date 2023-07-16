@@ -17,7 +17,6 @@ public class Articulo {
     protected String codigo;
    
     //constuctor/es
-
     //si no escribo el constructor, JVM me da uno por defecto
     public Articulo(
         String titulo,

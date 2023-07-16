@@ -2,8 +2,6 @@ package ar.com.codoacodo;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -14,10 +12,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import ar.com.codoacodo.dao.impl.DAO;
 import ar.com.codoacodo.dao.impl.MySQLDAOImpl;
 import ar.com.codoacodo.oop.Articulo;
+import ar.com.codoacodo.oop.Libro;
 
 @WebServlet("/EditarController")
 public class EditarController extends HttpServlet {
-    
 
     // esto lo maneja el servidor (Tomcat)
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -27,52 +25,47 @@ public class EditarController extends HttpServlet {
         DAO dao = new MySQLDAOImpl();
 
         try {
-            // success
-            Articulo producto = dao.getById(Long.parseLong(id));
+            Articulo articulo = dao.getById(Long.parseLong(id));
 
-            req.setAttribute("producto", producto);
+            req.setAttribute("producto", articulo);
         } catch (Exception e) {
-            // error
             req.setAttribute("error", "No se ha eliminado el articulo");
-            getServletContext().getRequestDispatcher("/ListadoArticuloController").forward(req, resp);// GET
+            getServletContext().getRequestDispatcher("/ListadoArticuloController").forward(req, resp);
         }
 
-        // redirect
-        getServletContext().getRequestDispatcher("/editar.jsp").forward(req, resp);// GET
+        getServletContext().getRequestDispatcher("/editar.jsp").forward(req, resp);
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // tendria que tener los parametros del front (<form>)
-        String titulo = req.getParameter("nombre");
-        double precio = Double.parseDouble(req.getParameter("precio"));
-        String autor = req.getParameter("autor");
-        String imagen = req.getParameter("imagen");
-        String codigo = req.getParameter("codigo");
-        Long id = Long.parseLong(req.getParameter("id"));
-        LocalDateTime fechaCreacion = LocalDateTime.now();
+        // Obtener el ID del artículo del parámetro de la solicitud
+        String id = req.getParameter("id");
 
-        Articulo modificado = new Articulo(id, titulo, imagen, autor, precio, true, codigo, fechaCreacion);
-
-
-        // Interface nombre = new ClaseQueImplementaLaIntarface();
+        // Obtener el DAO y el artículo existente por su ID
         DAO dao = new MySQLDAOImpl();
-
-        // puedo usar lo metodos que tiene DAO, sin saber quien cumple el contrato
         try {
-            dao.update(modificado);
-            // redirect
-            // getServletContext().getRequestDispatcher("/ListadoArticuloController").forward(req,
-            // resp);//POST ListadoArticuloController
+            Articulo articuloExistente = dao.getById(Long.parseLong(id));
+
+            // Obtener los parámetros del formulario
+            String titulo = req.getParameter("nombre");
+            double precio = Double.parseDouble(req.getParameter("precio"));
+            String autor = req.getParameter("autor");
+            String codigo = req.getParameter("codigo");
+            String isbn = "123465465456";
+            LocalDateTime fechaCreacion = LocalDateTime.now();
+
+            // Crear el objeto Articulo actualizado
+            Articulo articuloActualizado = new Libro(titulo, codigo, autor, precio, false, isbn, codigo, fechaCreacion);
+            articuloActualizado.setId(articuloExistente.getId());
+
+            // Actualizar el artículo en la base de datos
+            dao.update(articuloActualizado);
+
+            // Redirigir a la página de listado de artículos
             resp.sendRedirect(req.getContextPath() + "/ListadoArticuloController");
         } catch (Exception e) {
-            try {
-                // redirect
-                getServletContext().getRequestDispatcher("/editar.jsp").forward(req, resp);
-            } catch (ServletException | IOException ex) {
-                Logger.getLogger(EditarController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            // Manejar la excepción
             e.printStackTrace();
-        } // try/catch/finally
-
+            getServletContext().getRequestDispatcher("/editar.jsp").forward(req, resp);
+        }
     }
 }
